@@ -1,3 +1,27 @@
+** 原项目连接https://github.com/ultralytics/yolov5 **
+
+更改了detect部分逻辑
+```python
+import detect
+from utils.datasets import LoadImages
+
+# 初始化配置
+opt = detect.parse_opt()
+opt.view_img = True # optinal
+opt.nosave = True # optinal
+opt.save_txt = False # optinal
+# 创建一个yolo对象
+yolo = detect.Yolov5(**vars(opt))
+# 添加一个资源
+ds = LoadImages('D:/pythonproject/yolov5/resource/test1/', img_size=yolo.imgsz, stride=yolo.stride,
+                auto=yolo.pt)
+# 返回方框坐标和识别类型
+lines = yolo.getObjectAix(ds)
+lines = yolo.getObjectAix(ds1)
+lines = yolo.getObjectAix(ds2)
+
+```
+
 <div align="center">
 <p>
    <a align="left" href="https://ultralytics.com/yolov5" target="_blank">
